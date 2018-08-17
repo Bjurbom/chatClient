@@ -12,7 +12,7 @@ socket.on('connect', function() {
         text: "whats up"
     })
 ;
-    socket.on('incomingMessage', function (incomingMessage) {
+    socket.on('newMessage', function (incomingMessage) {
         console.log("new Email " , incomingMessage)
     });
 });

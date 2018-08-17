@@ -32,7 +32,7 @@ io.on('connection' , (socket) =>{
         console.log(newEmail);
     });
 
-    socket.emit('incomingMessage', {
+    socket.emit('newMessage', {
         fromn : "tor",
         text : "eyyy",
         createdAt : "Earth"
