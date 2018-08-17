@@ -23,6 +23,22 @@ app.use(express.static(publicPath));
 io.on('connection' , (socket) =>{
  console.log('New user connected');
 
+    socket.on('newMessage', (message) =>{
+        console.log(message);
+    });
+
+
+    socket.on('createEmail', (newEmail) =>{
+        console.log(newEmail);
+    });
+
+    socket.emit('incomingMessage', {
+        fromn : "tor",
+        text : "eyyy",
+        createdAt : "Earth"
+    })
+    
+
     socket.on('disconnect' , () =>{
         console.log("User have disconnected");
     });
