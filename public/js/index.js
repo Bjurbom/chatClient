@@ -24,4 +24,11 @@ socket.on('newEmail', function(email){
     console.log("New Email", email);
 });
 
+socket.emit('createEmail', {
+    from: "frank",
+    text: "text xD"
+}, function(data){
+    console.log('Got it', data);
+});
+
 
