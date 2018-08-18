@@ -7,11 +7,7 @@ socket.on('connect', function() {
     console.log("Connected to server");
 
 
-    socket.emit('newMessage', {
-        from: "lolXD",
-        text: "whats up"
-    })
-;
+
     socket.on('newMessage', function (incomingMessage) {
         console.log("new Email " , incomingMessage)
     });
