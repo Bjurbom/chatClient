@@ -6,7 +6,9 @@ var socket = io();
 socket.on('connect', function() {
     console.log("Connected to server");
 
-
+    socket.on('admin', function(adminMessage) {
+        console.log('Admin' , adminMessage);
+    });
 
     socket.on('newMessage', function (incomingMessage) {
         console.log("new Email " , incomingMessage)
