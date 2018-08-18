@@ -30,7 +30,7 @@ io.on('connection' , (socket) =>{
     
 
 
-    socket.on('createEmail', (newEmail, callback) =>{
+    socket.on('createMessage', (newEmail, callback) =>{
         console.log(newEmail);
         io.emit('newMessage',generateMessage(newEmail.from,newEmail.text))
         callback("this is from the server");

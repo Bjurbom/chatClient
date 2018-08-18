@@ -11,7 +11,12 @@ socket.on('connect', function() {
     });
 
     socket.on('newMessage', function (incomingMessage) {
-        console.log("new Email " , incomingMessage)
+        console.log("new Email " , incomingMessage);
+
+        var li = jQuery('<li></li>');
+        li.text(`${incomingMessage.from}: ${incomingMessage.text}`);
+
+        jQuery('#messages').append(li);
     });
 });
 
@@ -20,15 +25,18 @@ socket.on('disconnect', function() {
 });
 
 
-socket.on('newEmail', function(email){
-    console.log("New Email", email);
-});
 
-socket.emit('createEmail', {
-    from: "frank",
-    text: "text xD"
-}, function(data){
-    console.log('Got it', data);
+jQuery('#message-form').on('submit', function (e) {
+    e.preventDefault();
+
+
+    socket.emit('createMessage', {
+        from: 'User',
+        text: jQuery('[name=message]').val()
+
+    }, function() {
+
+    })
 });
 
 
