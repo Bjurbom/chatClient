@@ -10,11 +10,16 @@ socket.on('connect', function() {
         console.log('Admin' , adminMessage);
     });
 
+
+
+    //new message
     socket.on('newMessage', function (incomingMessage) {
-        console.log("new Email " , incomingMessage);
+        var formattedTime = moment(incomingMessage.createdAt).format('h:mm a');
+
+        console.log("newMessage" , incomingMessage);
 
         var li = jQuery('<li></li>');
-        li.text(`${incomingMessage.from}: ${incomingMessage.text}`);
+        li.text(`${incomingMessage.from} ${formattedTime} : ${incomingMessage.text}`);
 
         jQuery('#messages').append(li);
     });
@@ -28,9 +33,11 @@ socket.on('disconnect', function() {
 socket.on('newLocationMessage', function (message) {
     var li = jQuery('<li></li>');
     var a = jQuery('<a target="_blank">My current location</a>');
+    var formattedTime = moment(message.createdAt).format('h:mm a');
+    
 
 
-    li.text(`${message.from}: `);
+    li.text(`${message.from} ${formattedTime}: `);
     a.attr('href', message.url);
     li.append(a);
     jQuery('#messages').append(li);
