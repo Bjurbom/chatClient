@@ -26,6 +26,21 @@ function scrollToBotton () {
 socket.on('connect', function() {
     console.log("Connected to server");
 
+    var params = jQuery.deparam(window.location.search);
+
+
+    socket.emit('join' , params, function(err) {
+        if(err){
+            alert(err);           
+             //back to join page
+            window.location.href ='/';
+        } else {
+            console.log("no error");
+        }
+    });
+
+
+
     socket.on('admin', function(adminMessage) {
         console.log('Admin' , adminMessage);
     });
